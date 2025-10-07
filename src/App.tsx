@@ -74,23 +74,37 @@ export function App(): JSX.Element {
   }, [])
 
   return (
-    <div style={{ fontFamily: 'system-ui, Roboto, Arial, sans-serif', padding: 16, display: 'grid', gap: 12 }}>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1 style={{ margin: 0 }}>AR + CV Web (OpenCV.js)</h1>
-        <div aria-live="polite">FPS: {fps}</div>
-      </header>
-      <ControlsPanel algorithm={algorithm} onAlgorithmChange={setAlgorithm} params={params} onParamChange={onParamChange} />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-        <div>
-          <CameraView onStreamReady={onStreamReady} width={size.width} height={size.height} />
-          <canvas ref={canvasRef} style={{ display: 'none' }} />
+    <div className="container py-4">
+      <div className="card shadow-lg p-4" style={{ borderRadius: 18 }}>
+        <header className="d-flex justify-content-between align-items-center mb-3">
+          <h1 className="h3 mb-0 text-primary fw-bold">AR + CV Web <span className="fs-6 text-secondary">(OpenCV.js)</span></h1>
+          <span className="badge bg-info text-dark fs-6">FPS: {fps}</span>
+        </header>
+        <div className="mb-3">
+          <ControlsPanel
+            algorithm={algorithm}
+            onAlgorithmChange={setAlgorithm}
+            params={params}
+            onParamChange={onParamChange}
+          />
         </div>
-        <div>
-          <OverlayCanvas width={size.width} height={size.height} bitmap={bitmap} />
+        <div className="row g-3">
+          <div className="col-md-6">
+            <div className="border rounded-3 p-2 bg-light">
+              <CameraView onStreamReady={onStreamReady} width={size.width} height={size.height} />
+              <canvas ref={canvasRef} style={{ display: 'none' }} />
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="border rounded-3 p-2 bg-light">
+              <OverlayCanvas width={size.width} height={size.height} bitmap={bitmap} />
+            </div>
+          </div>
+        </div>
+        <div className="alert alert-info mt-4 mb-0 text-center">
+          <strong>Tip:</strong> Adjust parameters and algorithms to see real-time effects!
         </div>
       </div>
     </div>
   )
 }
-
-
