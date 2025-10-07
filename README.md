@@ -60,10 +60,6 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/) (for fast development)
 
-## License
-
-MIT
-
 ---
 
 **Tip:** Adjust parameters and algorithms in the UI to see real-time
